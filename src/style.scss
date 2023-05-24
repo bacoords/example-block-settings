@@ -1,0 +1,73 @@
+@import "@wordpress/base-styles/mixins";
+@import "@wordpress/base-styles/breakpoints";
+
+// Most used breakpoints
+// @link https://github.com/WordPress/gutenberg/blob/trunk/packages/base-styles/_breakpoints.scss
+
+// Frontend Settings
+.wp-block-group.has-responsive-settings:not(.block-editor-block-list__block),
+.wp-block-column.has-responsive-settings:not(.block-editor-block-list__block) {
+	&.has-responsive-settings-small {
+		@include break-medium() {
+			display: none;
+		}
+	}
+	&.has-responsive-settings-small-medium {
+		@include break-xlarge() {
+			display: none;
+		}
+	}
+	&.has-responsive-settings-medium {
+		@media (max-width: #{ ($break-medium - 1) }) {
+			display: none;
+		}
+		@include break-xlarge() {
+			display: none;
+		}
+	}
+	&.has-responsive-settings-medium-large {
+		@media (max-width: #{ ($break-medium - 1) }) {
+			display: none;
+		}
+	}
+	&.has-responsive-settings-large {
+		@media (max-width: #{ ($break-xlarge - 1) }) {
+			display: none;
+		}
+	}
+}
+
+// Editor Settings
+.editor-styles-wrapper {
+	.wp-block-group.has-responsive-settings:not(.is-selected):not(.has-child-selected),
+	.wp-block-column.has-responsive-settings:not(.is-selected):not(.has-child-selected) {
+		&.has-responsive-settings-small {
+			@include break-medium() {
+				opacity: 0.5;
+			}
+		}
+		&.has-responsive-settings-small-medium {
+			@include break-xlarge() {
+				opacity: 0.5;
+			}
+		}
+		&.has-responsive-settings-medium {
+			@media (max-width: #{ ($break-medium - 1) }) {
+				opacity: 0.5;
+			}
+			@include break-xlarge() {
+				opacity: 0.5;
+			}
+		}
+		&.has-responsive-settings-medium-large {
+			@media (max-width: #{ ($break-medium - 1) }) {
+				opacity: 0.5;
+			}
+		}
+		&.has-responsive-settings-large {
+			@media (max-width: #{ ($break-xlarge - 1) }) {
+				opacity: 0.5;
+			}
+		}
+	}
+}
