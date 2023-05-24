@@ -15,11 +15,7 @@
  */
 
 /**
- * Enqueue editor specific modifications in the Post Editor, Site Editor,
- * and Widgets Editor.
- *
- * This function enqueues the `editor.js` file found in `/src/js` and
- * adds extra dependencies depending on the current screen (post, widgets, site-editor).
+ * Enqueue editor specific modifications in the Post Editor.
  *
  * @return void
  */
