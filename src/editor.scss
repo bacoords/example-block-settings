@@ -3,33 +3,33 @@
 
 .wp-block-group,
 .wp-block-column {
-	&.has-responsive-settings {
+	&.has-responsive-settings:not(.is-selected):not(.has-child-selected) {
 		&.has-responsive-display-small {
 			@include break-medium() {
-				display: none;
+				opacity: 0.5;
 			}
 		}
 		&.has-responsive-display-small-medium {
 			@include break-xlarge() {
-				display: none;
+				opacity: 0.5;
 			}
 		}
 		&.has-responsive-display-medium {
 			@media (max-width: #{ ($break-medium - 1) }) {
-				display: none;
+				opacity: 0.5;
 			}
 			@include break-xlarge() {
-				display: none;
+				opacity: 0.5;
 			}
 		}
 		&.has-responsive-display-medium-large {
 			@media (max-width: #{ ($break-medium - 1) }) {
-				display: none;
+				opacity: 0.5;
 			}
 		}
 		&.has-responsive-display-large {
 			@media (max-width: #{ ($break-xlarge - 1) }) {
-				display: none;
+				opacity: 0.5;
 			}
 		}
 	}

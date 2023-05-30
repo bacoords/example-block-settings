@@ -30,24 +30,18 @@ add_action( 'enqueue_block_editor_assets', 'wp_dev_enqueue_editor_modifications'
 
 
 
-/**
- * Enqueue block specific styles in the editor.
- *
- * @return void
- */
 function wp_dev_enqueue_block_assets() {
-
-	$blocks = array(
-		'core/group',
-		'core/column',
-	);
-
+	$blocks = array( 'core/group', 'core/column' );
 	foreach ( $blocks as $block ) {
+		$src = plugin_dir_url( __FILE__ ) . '/build/style-index.css';
+		if ( is_admin() ) {
+			$src = plugin_dir_url( __FILE__ ) . '/build/index.css';
+		}
 		wp_enqueue_block_style(
 			$block,
 			array(
 				'handle' => 'example-block-settings',
-				'src'    => plugin_dir_url( __FILE__ ) . '/build/style-index.css',
+				'src'    => $src,
 			)
 		);
 	}

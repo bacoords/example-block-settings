@@ -8285,17 +8285,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 
 
 
 
 
-/**
- * additional block attributes object
- *
- * @link https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#attributes
- */
 const additionalAttributes = {
   hasResponsiveSettings: {
     type: "boolean",
@@ -8306,38 +8302,25 @@ const additionalAttributes = {
     default: "all"
   }
 };
-
-/**
- * BlockEdit
- *
- * a react component that will get mounted in the Editor when the block is
- * selected. It is recommended to use Slots like `BlockControls` or `InspectorControls`
- * in here to put settings into the blocks toolbar or sidebar.
- *
- * @link https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-edit-save.md#edit
- *
- * @param {object} props block props
- * @returns {JSX}
- */
-function BlockEdit(props) {
-  function setResponsiveSettings(value) {
+const BlockEdit = props => {
+  const setResponsiveSettings = value => {
     props.setAttributes({
       hasResponsiveSettings: value
     });
-  }
-  function setResponsiveDisplay(value) {
+  };
+  const setResponsiveDisplay = value => {
     props.setAttributes({
       hasResponsiveDisplay: value
     });
-  }
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Responsive Settings"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: "Enable Responsive Settings",
     checked: props.attributes.hasResponsiveSettings,
     onChange: setResponsiveSettings
   })), props.attributes.hasResponsiveSettings && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    label: "Display on",
+    label: "Responsive Display",
     labelPosition: "left",
     value: props.attributes.hasResponsiveDisplay,
     options: [{
@@ -8360,43 +8343,20 @@ function BlockEdit(props) {
       value: "large"
     }],
     onChange: setResponsiveDisplay
-  })))));
-}
-
-/**
- * generateClassNames
- *
- * a function to generate the new className string that should get added to
- * the wrapping element of the block.
- *
- * @param {object} attributes block attributes
- * @returns {string}
- */
-function generateClassNames(attributes) {
+  }))));
+};
+const generateClassName = attributes => {
   let string = "";
   if (attributes.hasResponsiveSettings && attributes.hasResponsiveDisplay) {
-    string += ` has-responsive-settings has-responsive-settings-${attributes.hasResponsiveDisplay} `;
+    string += `has-responsive-settings has-responsive-display-${attributes.hasResponsiveDisplay}`;
   }
   return string;
-}
-
-/**
- * registerBlockExtension
- *
- * a function that will register the block extension with the block components
- * library.
- *
- * @link https://github.com/10up/block-components/tree/develop/api/register-block-extension
- *
- * @param {array} blocks array of blocks to extend
- * @param {object} options extension options
- */
+};
 (0,_10up_block_components__WEBPACK_IMPORTED_MODULE_1__.registerBlockExtension)(["core/group", "core/column"], {
   extensionName: "responsive-settings",
   attributes: additionalAttributes,
-  classNameGenerator: generateClassNames,
-  Edit: BlockEdit,
-  order: "before"
+  classNameGenerator: generateClassName,
+  Edit: BlockEdit
 });
 
 /***/ }),
@@ -8719,6 +8679,19 @@ exports.typeOf = typeOf;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/hoist-non-react-statics/node_modules/react-is/cjs/react-is.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./src/editor.scss":
+/*!*************************!*\
+  !*** ./src/editor.scss ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
 
 
 /***/ }),
