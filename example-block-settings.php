@@ -29,7 +29,11 @@ add_action( 'enqueue_block_editor_assets', 'wp_dev_enqueue_editor_modifications'
 
 
 
-
+/**
+ * Enqueue block specific styles.
+ *
+ * @return void
+ */
 function wp_dev_enqueue_block_assets() {
 	$blocks = array( 'core/group', 'core/column' );
 	foreach ( $blocks as $block ) {
